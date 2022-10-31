@@ -18,7 +18,7 @@ public class MainPage {
         return new PaymentPage();
     }
 
-    public PaymentPage payByCreditCard() {
+    public PaymentPage payByCreditCardButtonClick() {
         creditBuyButton.click();
         paymentHeading.shouldHave(exactText("Кредит по данным карты"));
         return new PaymentPage();
