@@ -19,7 +19,7 @@ public class DataHelper {
         private String cardNumber;
         private String month;
         private String year;
-        private String owner;
+        private String cardHolder;
         private String cvv;
     }
 
@@ -32,11 +32,11 @@ public class DataHelper {
     }
 
     public String generateWrongMonth(int month) {
-        return LocalDate.now().minusMonths(month).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return LocalDate.now().minusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
     }
 
     public String generateWrongYear(int year) {
-        return LocalDate.now().minusYears(year).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        return LocalDate.now().minusYears(year).format(DateTimeFormatter.ofPattern("yy"));
     }
 
     public static PaymentInfo getValidCardInformation() {
@@ -71,7 +71,45 @@ public class DataHelper {
     
     public static PaymentInfo getInvalidMonth() {
         String year = generateYear();
-        return new PaymentInfo("4444 4444 4444 1111", "15", year, faker.name().fullName(), "123");
+        return new PaymentInfo("4444 4444 4444 4441", "15", year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getExpiredMonth() {
+        String month = generateWrongMonth(2);
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getInvalidMonthWithText() {
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", "AB", year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getEmptyMonth() {
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", "", year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getInvalidYear() {
+        String month = generateMonth();
+        return new PaymentInfo("4444 4444 4444 4441", month, "AB", faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getExpiredYear() {
+        String month = generateMonth();
+        String year = generateWrongYear(5);
+        return new PaymentInfo("4444 4444 4444 4441", month, year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getEmptyYear() {
+        String month = generateMonth();
+        return new PaymentInfo("4444 4444 4444 4441", month, "", faker.name().fullName(), "123");
+    }
+    
+     public static PaymentInfo getWrongCardHolderLanguage() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, "Иванов Иван", "123");
     }
 
 
