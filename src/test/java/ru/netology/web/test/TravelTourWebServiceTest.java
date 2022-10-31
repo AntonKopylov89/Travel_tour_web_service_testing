@@ -92,7 +92,6 @@ public class TravelTourWebServiceTest {
         var paymentPage = mainPage.payButtonClick();
         paymentPage.continueButton.click();
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -101,7 +100,6 @@ public class TravelTourWebServiceTest {
         var paymentPage = mainPage.payByCreditButtonClick();
         paymentPage.continueButton.click();
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -111,7 +109,7 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.paymentNotSuccessNotification();
-
+        
     }
     
     @Test
@@ -121,7 +119,7 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.paymentNotSuccessNotification();
-
+        
     }
     
      @Test
@@ -131,7 +129,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -141,7 +138,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -151,7 +147,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -161,7 +156,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -171,7 +165,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -181,7 +174,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
      @Test
@@ -191,7 +183,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getExpiredMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -201,7 +192,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getExpiredMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
      @Test
@@ -211,7 +201,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidMonthWithText();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -221,7 +210,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidMonthWithText();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -231,7 +219,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -241,7 +228,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyMonth();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
      @Test
@@ -251,7 +237,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -261,7 +246,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getInvalidYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
      @Test
@@ -271,7 +255,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getExpiredYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -281,7 +264,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getExpiredYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -291,7 +273,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -301,7 +282,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getEmptyYear();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -311,7 +291,6 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardHolderLanguage();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
     @Test
@@ -321,10 +300,78 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardHolderLanguage();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.wrongFieldFormatNotification();
-
     }
     
+    @Test
+     void shouldErrorPayDebetCardWithInvalidCardHolder() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCardHolder();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
     
+    @Test
+     void shouldErrorPayByCreditWithInvalidCardHolder() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCardHolder();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
     
+     @Test
+     void shouldErrorPayDebetCardWithEmptyCardHolder() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCardHolder();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
     
+    @Test
+     void shouldErrorPayByCreditWithEmptyCardHolder() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCardHolder();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
+    
+    @Test
+     void shouldErrorPayDebetCardWithInvalidCVV() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCVV();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
+    
+    @Test
+     void shouldErrorPayByCreditWithInvalidCVV() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCVV();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
+    
+    @Test
+     void shouldErrorPayDebetCardWithEmptyCVV() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCVV();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
+    
+    @Test
+     void shouldErrorPayByCreditWithEmptyCVV() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCVV();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+    }
+        
 }
