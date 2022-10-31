@@ -32,15 +32,57 @@ public class TravelTourWebServiceTest {
     static void tearDownAll() {
         SelenideLogger.removeListener("allure");
     }
+    
+    @Test
+    void shouldHighlightPayButton() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+   }
+    
+    @Test
+    void shouldHighlightCreditPayButton() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+   }
 
     @Test
-    void shouldSuccessPayDebetCard () {
+    void shouldSuccessPayDebetCard() {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
 
+    }
+    
+    @Test
+    void shouldSuccessPayByCredit() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var validCardInformation = DataHelper.getValidCardInformation();
+        paymentPage.cardInformationForPayment(validCardInformation);
+        paymentPage.paymentSuccessNotification();
+
+
+    }
+    
+    @Test
+    void shouldDeclinePayDebetCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
+        paymentPage.cardInformationForPayment(declinedCardInformation);
+        paymentPage.paymentNotSuccessNotification();
+
+    }
+    
+     @Test
+     void shouldDeclinePayByCredit() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
+        paymentPage.cardInformationForPayment(declinedCardInformation);
+        paymentPage.paymentNotSuccessNotification();
 
     }
 }
