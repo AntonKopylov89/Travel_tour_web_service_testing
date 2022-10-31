@@ -111,8 +111,29 @@ public class DataHelper {
         String year = generateYear();
         return new PaymentInfo("4444 4444 4444 4441", month, year, "Иванов Иван", "123");
     }
-
-
-
+    
+    public static PaymentInfo getInvalidCardHolder() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, "11111", "123");
+    }
+    
+    public static PaymentInfo getEmptyCardHolder() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, "", "123");
+    }
+    
+    public static PaymentInfo getInvalidCVV() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, faker.name().fullName(), "AAA");
+    }
+    
+    public static PaymentInfo getEmptyCVV() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4441", month, year, faker.name().fullName(), "");
+    }
 
 }
