@@ -85,4 +85,104 @@ public class TravelTourWebServiceTest {
         paymentPage.paymentNotSuccessNotification();
 
     }
+    
+    @Test
+    void shouldErrorPayDebetCardWithEmptyFields() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        paymentPage.continueButton.click();
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+    void shouldErrorPayByCreditWithEmptyFields() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        paymentPage.continueButton.click();
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+    void shouldPayDebetCardWithWrongNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getWrongCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.paymentNotSuccessNotification();
+
+    }
+    
+    @Test
+    void shouldPayByCreditWithWrongNumberCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getWrongCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.paymentNotSuccessNotification();
+
+    }
+    
+     @Test
+     void shouldPayDebetCardWithInvalidNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+     void shouldPayByCreditWithInvalidCardNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+     void shouldPayDebetCardWithEmptyNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+     void shouldPayByCreditWithEmptyCardNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getEmptyCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+     void shouldPayDebetCardWithInvalidMonth() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidMonth();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    @Test
+     void shouldPayByCreditWithEmptyCardNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getInvalidMonth();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.wrongFieldFormatNotification();
+
+    }
+    
+    
 }
