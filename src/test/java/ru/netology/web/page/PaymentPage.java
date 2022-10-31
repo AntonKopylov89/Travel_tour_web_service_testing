@@ -27,8 +27,12 @@ public class PaymentPage {
         cardNumberField.setValue(info.getCardNumber());
         monthField.setValue(info.getMonth());
         yearField.setValue(info.getYear());
-        ownerField.setValue(info.getOwner());
+        ownerField.setValue(info.getCardHolder());
         cvcCvvField.setValue(info.getCvv());
+        continueButton.click();
+    }
+
+    public void continueButtonClick () {
         continueButton.click();
     }
 

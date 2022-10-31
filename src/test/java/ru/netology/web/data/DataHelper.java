@@ -31,11 +31,11 @@ public class DataHelper {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yy"));
     }
 
-    public String generateWrongMonth(int month) {
+    public static String generateWrongMonth(int month) {
         return LocalDate.now().minusMonths(month).format(DateTimeFormatter.ofPattern("MM"));
     }
 
-    public String generateWrongYear(int year) {
+    public static String generateWrongYear(int year) {
         return LocalDate.now().minusYears(year).format(DateTimeFormatter.ofPattern("yy"));
     }
 

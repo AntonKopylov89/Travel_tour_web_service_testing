@@ -5,11 +5,17 @@ import lombok.val;
 import org.junit.jupiter.api.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import ru.netology.web.data.DataHelper;
+import ru.netology.web.data.DbUtils;
+import ru.netology.web.data.SQL;
 import ru.netology.web.page.MainPage;
 import ru.netology.web.page.PaymentPage;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class TravelTourWebServiceTest {
 
     @BeforeAll
@@ -34,24 +40,26 @@ public class TravelTourWebServiceTest {
     }
     
     @Test
-    void shouldHighlightPayButton() {
+    void shouldAppearPaymentWithDebetCardPage() {
         var mainPage = new MainPage();
-        var paymentPage = mainPage.payButtonClick();
+        mainPage.payButtonClick();
    }
     
     @Test
-    void shouldHighlightCreditPayButton() {
+    void shouldAppearPaymentByCreditPage() {
         var mainPage = new MainPage();
-        var paymentPage = mainPage.payByCreditButtonClick();
+        mainPage.payByCreditButtonClick();
    }
 
     @Test
-    void shouldSuccessPayDebetCard() {
+    void shouldSuccessPayDebetCard() throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
+        assertEquals("APPROVED", DbUtils.findPaymentStatus());
+
 
     }
     
@@ -62,7 +70,6 @@ public class TravelTourWebServiceTest {
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
-
 
     }
     
@@ -90,7 +97,7 @@ public class TravelTourWebServiceTest {
     void shouldErrorPayDebetCardWithEmptyFields() {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
-        paymentPage.continueButton.click();
+        paymentPage.continueButtonClick();
         paymentPage.wrongFieldFormatNotification();
     }
     
@@ -98,7 +105,7 @@ public class TravelTourWebServiceTest {
     void shouldErrorPayByCreditWithEmptyFields() {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCreditButtonClick();
-        paymentPage.continueButton.click();
+        paymentPage.continueButtonClick();
         paymentPage.wrongFieldFormatNotification();
     }
     
