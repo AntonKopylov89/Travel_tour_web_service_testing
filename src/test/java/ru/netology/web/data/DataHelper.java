@@ -44,8 +44,35 @@ public class DataHelper {
         String year = generateYear();
         return new PaymentInfo("4444 4444 4444 4441", month, year, faker.name().fullName(), "123");
     }
-
-
+    
+    public static PaymentInfo getDeclinedCardNumber() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 4442", month, year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getWrongCardNumber() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 1111", month, year, faker.name().fullName(), "123");
+    }
+    
+     public static PaymentInfo getInvalidCardNumber() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 111", month, year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getEmptyCardNumber() {
+        String month = generateMonth();
+        String year = generateYear();
+        return new PaymentInfo("", month, year, faker.name().fullName(), "123");
+    }
+    
+    public static PaymentInfo getInvalidMonth() {
+        String year = generateYear();
+        return new PaymentInfo("4444 4444 4444 1111", "15", year, faker.name().fullName(), "123");
+    }
 
 
 
