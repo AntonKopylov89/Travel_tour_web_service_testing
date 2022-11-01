@@ -58,9 +58,6 @@ public class TravelTourWebServiceTest {
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
-        assertEquals("APPROVED", DbUtils.findPaymentStatus());
-
-
     }
     
     @Test
@@ -70,7 +67,6 @@ public class TravelTourWebServiceTest {
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
-
     }
     
     @Test
@@ -80,7 +76,6 @@ public class TravelTourWebServiceTest {
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
         paymentPage.cardInformationForPayment(declinedCardInformation);
         paymentPage.paymentNotSuccessNotification();
-
     }
     
      @Test
@@ -90,7 +85,6 @@ public class TravelTourWebServiceTest {
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
         paymentPage.cardInformationForPayment(declinedCardInformation);
         paymentPage.paymentNotSuccessNotification();
-
     }
     
     @Test
@@ -115,8 +109,7 @@ public class TravelTourWebServiceTest {
         var paymentPage = mainPage.payButtonClick();
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
-        paymentPage.paymentNotSuccessNotification();
-        
+        paymentPage.paymentNotSuccessNotification();     
     }
     
     @Test
@@ -125,8 +118,7 @@ public class TravelTourWebServiceTest {
         var paymentPage = mainPage.payByCreditButtonClick();
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
-        paymentPage.paymentNotSuccessNotification();
-        
+        paymentPage.paymentNotSuccessNotification();   
     }
     
      @Test
