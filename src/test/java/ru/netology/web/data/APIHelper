@@ -1,0 +1,24 @@
+public class APIHelper {
+
+    static String url = System.getProperty("db.url");
+
+    static RequestSpecification requestSpec = new RequestSpecBuilder()
+            .setBaseUri(url.split(":")[0] + ":" + url.split(":")[1])
+            .setPort(Integer.parseInt(url.split(":")[2].split("/")[0]))
+            .setAccept(ContentType.JSON)
+            .setContentType(ContentType.JSON)
+            .log(LogDetail.ALL)
+            .build();
+
+    public static int getRequestStatusCode(PaymentInfo info, String path) {
+        int statusCode =
+                given()
+                        .spec(requestSpec)
+                        .body(info)
+                        .when()
+                        .post(path)
+                        .getStatusCode();
+        System.out.println(statusCode);
+        return statusCode;
+    }
+}
