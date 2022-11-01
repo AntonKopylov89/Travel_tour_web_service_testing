@@ -50,42 +50,6 @@ public class TravelTourWebServiceTest {
         var mainPage = new MainPage();
         mainPage.payByCreditButtonClick();
    }
-
-    @Test
-    void shouldSuccessPayDebetCard() throws SQLException {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payButtonClick();
-        var validCardInformation = DataHelper.getValidCardInformation();
-        paymentPage.cardInformationForPayment(validCardInformation);
-        paymentPage.paymentSuccessNotification();
-    }
-    
-    @Test
-    void shouldSuccessPayByCredit() {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payByCreditButtonClick();
-        var validCardInformation = DataHelper.getValidCardInformation();
-        paymentPage.cardInformationForPayment(validCardInformation);
-        paymentPage.paymentSuccessNotification();
-    }
-    
-    @Test
-    void shouldDeclinePayDebetCard() {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payButtonClick();
-        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
-        paymentPage.cardInformationForPayment(declinedCardInformation);
-        paymentPage.paymentNotSuccessNotification();
-    }
-    
-     @Test
-     void shouldDeclinePayByCredit() {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payByCreditButtonClick();
-        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
-        paymentPage.cardInformationForPayment(declinedCardInformation);
-        paymentPage.paymentNotSuccessNotification();
-    }
     
     @Test
     void shouldErrorPayDebetCardWithEmptyFields() {
@@ -101,24 +65,6 @@ public class TravelTourWebServiceTest {
         var paymentPage = mainPage.payByCreditButtonClick();
         paymentPage.continueButtonClick();
         paymentPage.wrongFieldFormatNotification();
-    }
-    
-    @Test
-    void shouldErrorPayDebetCardWithWrongNumber() {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payButtonClick();
-        var wrongCardInformation = DataHelper.getWrongCardNumber();
-        paymentPage.cardInformationForPayment(wrongCardInformation);
-        paymentPage.paymentNotSuccessNotification();     
-    }
-    
-    @Test
-    void shouldErrorPayByCreditWithWrongNumberCard() {
-        var mainPage = new MainPage();
-        var paymentPage = mainPage.payByCreditButtonClick();
-        var wrongCardInformation = DataHelper.getWrongCardNumber();
-        paymentPage.cardInformationForPayment(wrongCardInformation);
-        paymentPage.paymentNotSuccessNotification();   
     }
     
      @Test
