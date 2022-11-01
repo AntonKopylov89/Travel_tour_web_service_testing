@@ -1,0 +1,83 @@
+public class TravelTourWebServiceTest {
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @BeforeEach
+    void setUp() {
+        DbUtils.clearTables();
+        String appUrl = System.getProperty("app.url");
+        open(appUrl);
+    }
+
+    @AfterEach
+    void closeWebBrowser() {
+        closeWebDriver();
+    }
+    
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+    
+    @Test
+    void shouldConfirmPayWithApproveDebetCard() throws SQLException {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var validCardInformation = DataHelper.getValidCardInformation();
+        paymentPage.cardInformationForPayment(validCardInformation);
+        paymentPage.paymentSuccessNotification();
+        assertEquals("APPROVED", DbUtils.findPaymentStatus());
+    }
+    
+    @Test
+    void shouldConfirmPayByCreditWithApproveCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var validCardInformation = DataHelper.getValidCardInformation();
+        paymentPage.cardInformationForPayment(validCardInformation);
+        paymentPage.paymentSuccessNotification();
+        assertEquals("APPROVED", DbUtils.findCreditStatus());
+    }
+    
+    @Test
+    void shouldNotConfirmPayWithDeclineDebetCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
+        paymentPage.cardInformationForPayment(declinedCardInformation);
+        paymentPage.paymentNotSuccessNotification();
+        assertEquals("DECLINED", DbUtils.findPaymentStatus());
+    }
+    
+     @Test
+     void shouldNotConfirmPayByCreditWithDeclineCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var declinedCardInformation = DataHelper.getDeclinedCardNumber();
+        paymentPage.cardInformationForPayment(declinedCardInformation);
+        paymentPage.paymentNotSuccessNotification();
+        assertEquals("DECLINED", DbUtils.findCreditStatus());
+    }
+    
+    @Test
+    void shouldNotConfirmPayDebetCardWithWrongNumber() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payButtonClick();
+        var wrongCardInformation = DataHelper.getWrongCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.paymentNotSuccessNotification(); 
+        assertEquals("0", DbUtils.countRecords());
+    }
+    
+    @Test
+    void shouldNotConfirmPayByCreditWithWrongNumberCard() {
+        var mainPage = new MainPage();
+        var paymentPage = mainPage.payByCreditButtonClick();
+        var wrongCardInformation = DataHelper.getWrongCardNumber();
+        paymentPage.cardInformationForPayment(wrongCardInformation);
+        paymentPage.paymentNotSuccessNotification(); 
+        assertEquals("0", DbUtils.countRecords());
+    }
