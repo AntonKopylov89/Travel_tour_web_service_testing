@@ -1,0 +1,26 @@
+public class APITest {
+
+    PaymentInfo invalidHolderCard = DataHelper.getWrongCardHolderLanguage();
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
+    @Test
+    void shouldNotSendDebetPaymentRequestWithInvalidName() {
+        int statusCode = APIHelper.getRequestStatusCode(invalidHolderCard, "/api/v1/pay");
+        assertNotEquals(200, statusCode);
+    }
+
+    @Test
+    void shouldNotSendCreditPaymentRequestWithInvalidtName() {
+        int statusCode = APIHelper.getRequestStatusCode(invalidHolderCard, "/api/v1/credit");
+        assertNotEquals(200, statusCode);
+    }
+}
