@@ -7,7 +7,7 @@ public class TravelTourWebServiceTest {
 
     @BeforeEach
     void setUp() {
-        DbUtils.clearTables();
+        DbHelper.clearTables();
         String appUrl = System.getProperty("app.url");
         open(appUrl);
     }
@@ -29,7 +29,7 @@ public class TravelTourWebServiceTest {
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
-        assertEquals("APPROVED", DbUtils.findPaymentStatus());
+        assertEquals("APPROVED", DbHelper.findPaymentStatus());
     }
     
     @Test
@@ -39,7 +39,7 @@ public class TravelTourWebServiceTest {
         var validCardInformation = DataHelper.getValidCardInformation();
         paymentPage.cardInformationForPayment(validCardInformation);
         paymentPage.paymentSuccessNotification();
-        assertEquals("APPROVED", DbUtils.findCreditStatus());
+        assertEquals("APPROVED", DbHelper.findCreditStatus());
     }
     
     @Test
@@ -49,7 +49,7 @@ public class TravelTourWebServiceTest {
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
         paymentPage.cardInformationForPayment(declinedCardInformation);
         paymentPage.paymentNotSuccessNotification();
-        assertEquals("DECLINED", DbUtils.findPaymentStatus());
+        assertEquals("DECLINED", DbHelper.findPaymentStatus());
     }
     
      @Test
@@ -59,7 +59,7 @@ public class TravelTourWebServiceTest {
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
         paymentPage.cardInformationForPayment(declinedCardInformation);
         paymentPage.paymentNotSuccessNotification();
-        assertEquals("DECLINED", DbUtils.findCreditStatus());
+        assertEquals("DECLINED", DbHelper.findCreditStatus());
     }
     
     @Test
@@ -69,7 +69,7 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.paymentNotSuccessNotification(); 
-        assertEquals("0", DbUtils.countRecords());
+        assertEquals("0", DbHelper.countRecords());
     }
     
     @Test
@@ -79,5 +79,5 @@ public class TravelTourWebServiceTest {
         var wrongCardInformation = DataHelper.getWrongCardNumber();
         paymentPage.cardInformationForPayment(wrongCardInformation);
         paymentPage.paymentNotSuccessNotification(); 
-        assertEquals("0", DbUtils.countRecords());
+        assertEquals("0", DbHelper.countRecords());
     }
