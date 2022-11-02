@@ -33,7 +33,7 @@ public class TravelTourWebServiceTest {
     }
     
     @Test
-    void shouldConfirmPayByCreditWithApproveCard() {
+    void shouldConfirmPayByCreditWithApproveCard() throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCreditButtonClick();
         var validCardInformation = DataHelper.getValidCardInformation();
@@ -43,7 +43,7 @@ public class TravelTourWebServiceTest {
     }
     
     @Test
-    void shouldNotConfirmPayWithDeclineDebetCard() {
+    void shouldNotConfirmPayWithDeclineDebetCard() throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
@@ -53,7 +53,7 @@ public class TravelTourWebServiceTest {
     }
     
      @Test
-     void shouldNotConfirmPayByCreditWithDeclineCard() {
+     void shouldNotConfirmPayByCreditWithDeclineCard() throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCreditButtonClick();
         var declinedCardInformation = DataHelper.getDeclinedCardNumber();
@@ -63,7 +63,7 @@ public class TravelTourWebServiceTest {
     }
     
     @Test
-    void shouldNotConfirmPayDebetCardWithWrongNumber() {
+    void shouldNotConfirmPayDebetCardWithWrongNumber()throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
         var wrongCardInformation = DataHelper.getWrongCardNumber();
@@ -73,7 +73,7 @@ public class TravelTourWebServiceTest {
     }
     
     @Test
-    void shouldNotConfirmPayByCreditWithWrongNumberCard() {
+    void shouldNotConfirmPayByCreditWithWrongNumberCard() throws SQLException {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payByCreditButtonClick();
         var wrongCardInformation = DataHelper.getWrongCardNumber();
