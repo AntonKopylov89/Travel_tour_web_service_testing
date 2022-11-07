@@ -1,6 +1,9 @@
 HELP.md
 .gradle
 build/
+db_mysql/
+data_postgres/
+data_mysql/
 
 ### STS ###
 .apt_generated
