@@ -176,7 +176,7 @@ public class TravelTourWebServiceTest {
     }
     
      @Test
-     void shouldErrorPayDebetCardWithIvalidYear() {
+     void shouldErrorPayDebetCardWithInvalidYear() {
         var mainPage = new MainPage();
         var paymentPage = mainPage.payButtonClick();
         var wrongCardInformation = DataHelper.getInvalidYear();
