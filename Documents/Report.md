@@ -8,6 +8,8 @@
 * Успешно пройденных: 34 (85%)
 * Пройденных с ошибкой: 6 (15%)
 
+![Скриншот отчета Allure](https://user-images.githubusercontent.com/102693281/200483166-4744c823-db17-438a-a7d2-fab4bcf1aaff.png)
+
 ## [Выявленные дефекты](https://github.com/AntonKopylov89/Travel_tour_web_service_testing/issues):
 * [При заполнении поля "Владелец" невалидным значением форма успешно отправляется](https://github.com/AntonKopylov89/Travel_tour_web_service_testing/issues/5)
 * [При незаполненном поле "CVC/CVV" под заполненным полем "Владелец" появляется сообщение об ошибке](https://github.com/AntonKopylov89/Travel_tour_web_service_testing/issues/4)
